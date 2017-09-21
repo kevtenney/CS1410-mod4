@@ -14,7 +14,7 @@ public:
     // Constructor
     Counter(): count(0)
     {}  //want an empty body after the making of a constructor
-    
+
     void incCount()     //doing increment count
     {
         count++;
