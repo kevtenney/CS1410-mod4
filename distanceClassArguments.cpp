@@ -10,15 +10,19 @@ private:
     float inches;   //you can not put anything as private if you want
     //but it is very bad style...it would kill encapsultation
     //to not have private...need to seperate data.
+
+    static int count;   // One variable per CLASS...Every object shares this variable
 public:
     //Constructor #1
     Distance(): feet(0), inches(0) // constructor with no arguments .
-    {/*empty body*/}
+    {count++;}
 
     //Constructor #2
     //constructor with two arguments
     Distance(int ft, float in): feet(ft), inches(in)
-    {/*empty body*/}
+    {
+        count++;
+    }
 
     void setDist(int f, float i)
     {
@@ -36,25 +40,35 @@ public:
     {
         cout << "Feet "<<feet<<" and inches "<<inches<<endl;
     }
+    int getCount()
+    {
+        //cout << "Count is "<<count<< endl;
+        return count;
+    }
     void add_dist(Distance d1, Distance d2);
     Distance add_dist_to_me(Distance d1);
 };
+int Distance::count = 0; //outside class but Distance:: lets it know its using class
+
 
 
 int main(void)
 {
     //Create an instance "instantiate" - technical term
     // I make d1 and d2 members of the the Distance class below by declarations
-    Distance d1, d4;
+    Distance d1, d4;    // 2 objects of Distance are created here
     cout<<"\nd1 = ";
     d1.showDist();
 
-    Distance d2(8, 2);
-    Distance d3(2, 4);
+    Distance d2(8, 2);  // another object of Distance is created here and
+    Distance d3(2, 4);  //  here.
     cout<<"\nd2 = ";
     d2.showDist();
     cout<<"\nd3 = ";
     d3.showDist();
+
+    cout<<"Count is "<< d4.getCount()<<endl;    //Every time object of Distance is
+                                                //created it counts it
 
     d4.add_dist(d2, d3);
     cout<<"\nd4 = ";
