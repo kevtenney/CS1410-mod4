@@ -48,7 +48,11 @@ public:
     void add_dist(Distance d1, Distance d2);
     Distance add_dist_to_me(Distance d1);
 };
-int Distance::count = 0; //outside class but Distance:: lets it know its using class
+//outside class but Distance:: lets it know its using class
+int Distance::count = 0;
+
+//Prototype
+void ShowCurrentCount(Distance d1);
 
 
 
@@ -77,6 +81,8 @@ int main(void)
     d4 = d4.add_dist_to_me(d2);
     cout<<"\nd4 new = ";
     d4.showDist();
+
+    ShowCurrentCount(d4);
 
 
     return 0;
@@ -115,4 +121,9 @@ Distance Distance::add_dist_to_me(Distance d1)
     temp.feet += feet + d1.feet;
 
     return temp;
+}
+void ShowCurrentCount(Distance d1)
+{
+    cout<<"The current count in my super class is "
+        <<d1.getCount() << endl;
 }
